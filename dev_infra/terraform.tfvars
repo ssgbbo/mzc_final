@@ -1,0 +1,19 @@
+#These are the only value that need to be changed on implementation
+region                   = "us-west-1"
+dev_vpc_cidr                 = "192.168.0.0/16"
+dev_public_subnet_1          = "192.168.1.0/24"
+dev_public_subnet_2          = "192.168.2.0/24"
+dev_private_subnet_1         = "192.168.3.0/24"
+dev_private_subnet_2         = "192.168.4.0/24"
+dev_availibilty_zone_1       = "us-west-1b"
+dev_availibilty_zone_2       = "us-west-1c"
+container_port           = 8080
+shared_config_files      = "C:/Users/mzc/.aws/config"      # Replace with path
+shared_credentials_files = "C:/Users/mzc/.aws/credentials" # Replace with path
+# shared_config_files      = "C:/Users/BBoSSg/.aws/config"      # Replace with path
+# shared_credentials_files = "C:/Users/BBoSSg/.aws/credentials" # Replace with path
+credential_profile       = "lsb-admin"                     # Replace with what you named your profile
+domain_name              = "minzs.shop"
+dev_subdomain_name              = "dev.minzs.shop"
+dev_ecs_service_name         = "dev_lsb_ecs_service"
+dev_ecs_cluster_name         = "dev_lsb_ecs_cluster"

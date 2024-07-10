@@ -1,0 +1,46 @@
+{
+    "family": "dev_lsb_family",
+    "requiresCompatibilities": [
+      "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "cpu": "256",
+    "memory": "512",
+    "executionRoleArn": "arn:aws:iam::992382638511:role/ecs-role",
+    "taskRoleArn": "arn:aws:iam::992382638511:role/ecs-role",
+    "containerDefinitions": [
+      {
+        "name": "dev_lsb_container",
+        "image": "992382638511.dkr.ecr.us-west-1.amazonaws.com/dev-prd-lsb-ecr:latest",
+        "essential": true,
+        "portMappings": [
+          {
+            "containerPort": 8080,
+            "hostPort": 8080
+          }
+        ],
+        "healthCheck": {
+          "command": [
+            "CMD-SHELL",
+            "curl -f http://localhost:8080/ || exit 1"
+          ],
+          "interval": 30,
+          "timeout": 5,
+          "startPeriod": 10,
+          "retries": 3
+        },
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "dev-lsb_task_log_group",
+            "awslogs-region": "us-west-1",
+            "awslogs-stream-prefix": "dev-lsb_log_stream"
+          }
+        }
+      }
+    ],
+    "runtimePlatform": {
+      "operatingSystemFamily": "LINUX",
+      "cpuArchitecture": "X86_64"
+    }
+  }
